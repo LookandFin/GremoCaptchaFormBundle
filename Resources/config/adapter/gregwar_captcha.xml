@@ -11,7 +11,7 @@
         <service id="gremo_captcha.form.type.gregwar_captcha" class="Gremo\CaptchaFormBundle\Form\Type\GregwarCaptchaType">
             <tag name="form.type" alias="gremo_captcha_gregwar" />
             <tag name="captcha_form.type" adapter="gregwar_captcha" />
-            <argument type="service" id="session" />
+            <argument type="service" id="request_stack" />
             <argument type="service" id="gremo_captcha.gregwar_builder" />
             <argument type="collection" /><!-- configuration -->
         </service>

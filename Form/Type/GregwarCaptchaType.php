@@ -17,6 +17,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\OptionsResolver\Options;
@@ -43,9 +44,9 @@ class GregwarCaptchaType extends AbstractType
      */
     private $config;
 
-    public function __construct(SessionInterface $session, CaptchaBuilder $captchaBuilder, array $config)
+    public function __construct(RequestStack $request_stack, CaptchaBuilder $captchaBuilder, array $config)
     {
-        $this->session = $session;
+        $this->session = $request_stack->getSession();
         $this->captchaBuilder = $captchaBuilder;
         $this->config = $config;
     }

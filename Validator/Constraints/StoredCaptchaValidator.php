@@ -12,6 +12,7 @@
 namespace Gremo\CaptchaFormBundle\Validator\Constraints;
 
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
@@ -24,9 +25,9 @@ class StoredCaptchaValidator extends ConstraintValidator
      */
     private $session;
 
-    public function __construct(SessionInterface $session)
+    public function __construct(RequestStack $request_stack)
     {
-        $this->session = $session;
+        $this->session = $request_stack->getSession();
     }
 
     /**

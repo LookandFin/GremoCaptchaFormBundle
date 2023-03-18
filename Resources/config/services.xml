@@ -13,7 +13,7 @@
         <!-- stored captcha validator -->
         <service id="gremo_captcha.validator.stored_captcha" class="Gremo\CaptchaFormBundle\Validator\Constraints\StoredCaptchaValidator">
             <tag name="validator.constraint_validator" alias="gremo_captcha_validator_stored_captcha" />
-            <argument type="service" id="session" />
+            <argument type="service" id="request_stack" />
         </service>
     </services>
 </container>
