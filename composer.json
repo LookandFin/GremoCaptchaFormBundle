@@ -23,9 +23,9 @@
     "require-dev": {
         "google/recaptcha": "^1.1",
         "gregwar/captcha": "^1.1",
-        "symfony/form": "^7.2",
-        "symfony/options-resolver": "^7.2",
-        "symfony/validator": "^7.2"
+        "symfony/form": "^8.0",
+        "symfony/options-resolver": "^8.0",
+        "symfony/validator": "^8.0"
     },
     "suggest": {
         "google/recaptcha": "Allows you to use Google reCAPTCHA adapter",
