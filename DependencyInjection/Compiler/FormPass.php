@@ -20,7 +20,7 @@ class FormPass implements CompilerPassInterface
     /**
      * {@inheritdoc}
      */
-    public function process(ContainerBuilder $container)
+    public function process(ContainerBuilder $container): void
     {
         if (!$container->hasDefinition($definition = 'gremo_captcha.captcha_form_type')) {
             return;
