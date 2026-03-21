@@ -63,7 +63,7 @@ class GremoCaptchaFormExtension extends Extension
 
         $factories = array();
         foreach (array_keys($container->findTaggedServiceIds('gremo_captcha.adapter_factory')) as $id) {
-            $factory = $container->get($id);
+            $factory = new $id(); // instanciation directe par FQCN
             $factories[str_replace('-', '_', $factory->getKey())] = $factory;
         }
 
