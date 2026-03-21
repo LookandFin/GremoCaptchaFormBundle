@@ -77,7 +77,7 @@ class HoneypotAdapter implements AdapterFactoryInterface
         );
         $loader->load('adapter/honeypot.php');
 
-        $container->getDefinition('gremo_captcha.form.type.honeypot')
+        $container->getDefinition(\Gremo\CaptchaFormBundle\Form\Type\HoneypotType::class)
             ->replaceArgument(0, $config);
     }
 
