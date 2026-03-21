@@ -14,6 +14,7 @@ namespace Gremo\CaptchaFormBundle\DependencyInjection;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
+use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 class GremoCaptchaFormExtension extends Extension
@@ -31,8 +32,11 @@ class GremoCaptchaFormExtension extends Extension
         $configuration = new Configuration($this->loadAdapterFactories());
         $config = $this->processConfiguration($configuration, $configs);
 
-        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('services.xml');
+        $loader = new PhpFileLoader(
+            $container,
+            new FileLocator(__DIR__ . '/../Resources/config')
+        );
+        $loader->load('services.php');
 
         $container->setParameter('gremo_captcha.template', $config['template']);
         $container->setParameter('gremo_captcha.default_adapter', $config['default_adapter']);
@@ -50,8 +54,12 @@ class GremoCaptchaFormExtension extends Extension
         }
 
         $container = new ContainerBuilder();
-        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
-        $loader->load('factories.xml');
+
+        $loader = new PhpFileLoader(
+            $container,
+            new FileLocator(__DIR__ . '/../Resources/config')
+        );
+        $loader->load('factories.php');
 
         $factories = array();
         foreach (array_keys($container->findTaggedServiceIds('gremo_captcha.adapter_factory')) as $id) {

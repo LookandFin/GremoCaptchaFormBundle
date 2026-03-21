@@ -15,6 +15,7 @@ use Gremo\CaptchaFormBundle\DependencyInjection\Factory\AdapterFactoryInterface;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\HttpKernel\Kernel;
 
@@ -70,8 +71,11 @@ class HoneypotAdapter implements AdapterFactoryInterface
             }
         }
 
-        $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../../../Resources/config'));
-        $loader->load('adapter/honeypot.xml');
+        $loader = new PhpFileLoader(
+            $container,
+            new FileLocator(__DIR__ . '/../../../Resources/config')
+        );
+        $loader->load('adapter/honeypot.php');
 
         $container->getDefinition('gremo_captcha.form.type.honeypot')
             ->replaceArgument(0, $config);
