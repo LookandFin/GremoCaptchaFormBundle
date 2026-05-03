@@ -42,7 +42,7 @@ class HoneypotType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $options = array();
         $options['mapped'] = false;
@@ -63,7 +63,7 @@ class HoneypotType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getParent()
+    public function getParent(): ?string
     {
         return $this->config['type'];
     }
@@ -71,7 +71,7 @@ class HoneypotType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'gremo_captcha_honeypot';
     }
