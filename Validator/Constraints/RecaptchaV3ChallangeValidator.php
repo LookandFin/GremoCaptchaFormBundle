@@ -35,7 +35,7 @@ class RecaptchaV3ChallangeValidator extends ConstraintValidator
     /**
      * {@inheritdoc}
      */
-    public function validate($value, Constraint $constraint)
+    public function validate($value, Constraint $constraint): void
     {
         if (!$constraint instanceof RecaptchaV3Challange) {
             throw new UnexpectedTypeException($constraint, __NAMESPACE__.'\RecaptchaV3Challange');

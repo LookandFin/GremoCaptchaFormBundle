@@ -49,7 +49,7 @@ class StoredCaptcha extends Constraint
     /**
      * {@inheritdoc}
      */
-    public function validatedBy()
+    public function validatedBy(): string
     {
         return 'gremo_captcha_validator_stored_captcha';
     }
