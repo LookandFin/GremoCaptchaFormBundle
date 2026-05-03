@@ -43,7 +43,7 @@ class CaptchaType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'gremo_captcha';
     }
@@ -51,7 +51,7 @@ class CaptchaType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getParent()
+    public function getParent(): ?string
     {
         if (version_compare(Kernel::VERSION, '2.7', '<=')) {
             return $this->adapterForm->getName();
