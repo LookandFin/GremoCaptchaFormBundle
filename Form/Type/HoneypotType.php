@@ -46,7 +46,7 @@ class HoneypotType extends AbstractType
     {
         $options = array();
         $options['mapped'] = false;
-        $options['constraints'] = array(new Blank(array('message' => 'The captcha challenge was not solved.')));
+        $options['constraints'] = array(new Blank(null, message:'The captcha challenge was not solved.'));
         switch ($this->config['type']) {
             case 'text':
             case 'Symfony\Component\Form\Extension\Core\Type\TextType':
